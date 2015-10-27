@@ -1,0 +1,18 @@
+<h1>Welcome to the list of tasks</h1>
+<h3>
+  <%= link_to "Add a new task", new_task_path %>
+</h3>
+<h1>The list of existing task you have to get rid of:</h1>
+<hr>
+<% @tasks.each do |task| %>
+
+  <h2>Task content: <%=task.content %></h2>
+  <h2>Task priority: <%=task.priority %></h2>
+  <h2>Task done ? <%=task.done%></h2>
+  <%= link_to "Update this task", edit_task_path(task) %>
+
+  <%= link_to "Delete this task", task_path(task),
+    method: :delete,
+    data: { confirm: "Are you sure?"} %>
+  <hr>
+<% end %>
